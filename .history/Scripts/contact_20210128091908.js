@@ -58,7 +58,7 @@ class Contact {
         return {
             "fullName":this.FullName,
             "contactNumber": this.ContactNumber,
-            "emailAddress": this.EmailAddress
+            "enailAddress": this.EmailAddress
         }
     }
 
@@ -72,9 +72,14 @@ class Contact {
         {
             return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
         }
-        else
+        else if (this.FullName === "" || this.ContactNumber === "" || this.EmailAddress === "")
         {
-            console.error("One or more properties of the Contact is empty");
+            console.warn("Warning: One or more of the contact properties are empty");
+            return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
+        }
+        if (this.FullName === "" && this.ContactNumber === "" && this.EmailAddress === "")
+        {
+            console.warn("Warning: All of the contact properties are empty");
             return null;
         }
     }

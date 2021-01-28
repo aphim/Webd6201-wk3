@@ -6,6 +6,21 @@
 
 
 "use strict";
+/*
+let myContact = 
+{
+    "fullName":"Tom Smith",
+    "ContactNumber":"4165555555",
+    "EmailAddress":"tom@example.ca",
+    "saysHello": function(){
+        console.log(`${fullName} says Hello!`);
+    },
+    "someOtherList":{
+        "friendsList":[
+            "Peter Parker", "Tony stark", "Stephen Strange"
+        ]
+    }
+};*/
 
 (function()
 {
@@ -16,6 +31,12 @@ function displayHome()
         
         //Different ways to select a paragraph element "paragraph one"
         let paragraphOneElement = document.getElementById("paragraphOne");
+        
+        //let paragraphOneParagraph = document.getElementsByTagName("p")[0];
+        //let paragraphOneQuery = document.querySelector("p");
+        //console.log(paragraphOneElement);
+        //console.log(paragraphOneParagraph);
+        //console.log(paragraphOneQuery);
 
         paragraphOneElement.textContent = paragraphOneText;
         paragraphOneElement.className = "fs-5";
@@ -68,7 +89,6 @@ function displayServices()
 {
     
 }
-
 function displayContact()
 {
     let messageArea = document.getElementById("messageArea");
@@ -90,7 +110,6 @@ function displayContact()
                 messageArea.hidden = true;
             }
         });
-        
 
     let sendButton = document.getElementById("sendButton");
     sendButton.addEventListener("click", function(event)
@@ -98,7 +117,7 @@ function displayContact()
         //event.preventDefault();
         let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
         
-        if(contact.serialize())
+        if(contact.serialize() !== null)
         {
             localStorage.setItem((localStorage.length + 1).toString(), contact.serialize());
         }
@@ -106,32 +125,8 @@ function displayContact()
     });
 }
 
-function displayContactList() 
-    {
-      if (localStorage.length > 0) 
-      {
-        let contactList = document.getElementById("contactList");
 
-        let data = "";
 
-        for (let index = 0; index < localStorage.length; index++) 
-        {
-          let contactData = localStorage.getItem((index + 1).toString());
-
-          let contact = new Contact();
-          contact.deserialize(contactData);
-
-          data += `<tr>
-          <th scope="row">${index + 1}</th>
-          <td>${contact.FullName}</td>
-          <td>${contact.ContactNumber}</td>
-          <td>${contact.EmailAddress}</td>
-        </tr>`;
-        }
-
-        contactList.innerHTML = data;
-      }
-    }
 
     function Start()
     {
@@ -153,9 +148,6 @@ function displayContactList()
                 break;
             case "Contact":
                 displayContact();
-                break;
-            case "Contact-List":
-                displayContactList();
                 break;
         }
         

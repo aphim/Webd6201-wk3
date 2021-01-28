@@ -6,6 +6,21 @@
 
 
 "use strict";
+/*
+let myContact = 
+{
+    "fullName":"Tom Smith",
+    "ContactNumber":"4165555555",
+    "EmailAddress":"tom@example.ca",
+    "saysHello": function(){
+        console.log(`${fullName} says Hello!`);
+    },
+    "someOtherList":{
+        "friendsList":[
+            "Peter Parker", "Tony stark", "Stephen Strange"
+        ]
+    }
+};*/
 
 (function()
 {
@@ -16,6 +31,12 @@ function displayHome()
         
         //Different ways to select a paragraph element "paragraph one"
         let paragraphOneElement = document.getElementById("paragraphOne");
+        
+        //let paragraphOneParagraph = document.getElementsByTagName("p")[0];
+        //let paragraphOneQuery = document.querySelector("p");
+        //console.log(paragraphOneElement);
+        //console.log(paragraphOneParagraph);
+        //console.log(paragraphOneQuery);
 
         paragraphOneElement.textContent = paragraphOneText;
         paragraphOneElement.className = "fs-5";
@@ -68,44 +89,6 @@ function displayServices()
 {
     
 }
-
-function displayContact()
-{
-    let messageArea = document.getElementById("messageArea");
-    messageArea.hidden = true;
-    //form validation
-    let fullName = document.getElementById("fullName");
-        fullName.addEventListener("blur", function() 
-        {
-            if(fullName.value.length < 2)
-            {
-                fullName.focus();
-                fullName.select();
-                messageArea.hidden = false;
-                messageArea.textContent = "Please enter an appropriate Name";
-            }
-            else
-            {
-                messageArea.removeAttribute("class");
-                messageArea.hidden = true;
-            }
-        });
-        
-
-    let sendButton = document.getElementById("sendButton");
-    sendButton.addEventListener("click", function(event)
-    {
-        //event.preventDefault();
-        let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
-        
-        if(contact.serialize())
-        {
-            localStorage.setItem((localStorage.length + 1).toString(), contact.serialize());
-        }
-
-    });
-}
-
 function displayContactList() 
     {
       if (localStorage.length > 0) 
@@ -130,8 +113,49 @@ function displayContactList()
         }
 
         contactList.innerHTML = data;
-      }
+      };
     }
+
+function displayContact()
+{
+    let messageArea = document.getElementById("messageArea");
+    messageArea.hidden = true;
+    //form validation
+    let fullName = document.getElementById("fullName");
+        fullName.addEventListener("blur", function() 
+        {
+            if(fullName.value.length < 2)
+            {
+                fullName.focus();
+                fullName.select();
+                messageArea.hidden = false;
+                messageArea.textContent = "Please enter an appropriate Name";
+            }
+            else
+            {
+                messageArea.removeAttribute("class");
+                messageArea.hidden = true;
+            }
+        });
+
+
+
+    let sendButton = document.getElementById("sendButton");
+    sendButton.addEventListener("click", function(event)
+    {
+        //event.preventDefault();
+        let contact = new Contact(fullName.value, contactNumber.value, emailAddress.value);
+        
+        if(contact.serialize())
+        {
+            localStorage.setItem((localStorage.length + 1).toString(), contact.serialize());
+        }
+
+    });
+}
+
+
+
 
     function Start()
     {
@@ -155,7 +179,7 @@ function displayContactList()
                 displayContact();
                 break;
             case "Contact-List":
-                displayContactList();
+                displayContact();
                 break;
         }
         

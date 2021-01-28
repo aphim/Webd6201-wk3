@@ -35,9 +35,9 @@ class Contact {
      * @param {*} emailAddress 
      */
     constructor(fullName = "", contactNumber = "", emailAddress = "") {
-        this.FullName = fullName;
-        this.ContactNumber = contactNumber;
-        this.EmailAddress = emailAddress;
+        this.m_fullName = fullName;
+        this.m_contactNumber = contactNumber;
+        this.m_emailAddress = emailAddress;
     }
 
     /**
@@ -58,7 +58,7 @@ class Contact {
         return {
             "fullName":this.FullName,
             "contactNumber": this.ContactNumber,
-            "emailAddress": this.EmailAddress
+            "enailAddress": this.EmailAddress
         }
     }
 
@@ -72,7 +72,7 @@ class Contact {
         {
             return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
         }
-        else
+        else if (this.FullName === "" && this.ContactNumber === "" && this.EmailAddress === "")
         {
             console.error("One or more properties of the Contact is empty");
             return null;
