@@ -13,19 +13,19 @@ class Contact {
     }
     get ContactNumber() 
     {
-        return this.m_contactNumber;
+        return this.m_fullName;
     }
     set ContactNumber(value) 
     {
-        this.m_contactNumber = value;
+        this.m_fullName = value;
     }
     get EmailAddress() 
     {
-        return this.m_emailAddress;
+        return this.m_fullName;
     }
     set EmailAddress(value) 
     {
-        this.m_emailAddress = value;
+        this.m_fullName = value;
     }
     
     /**
@@ -70,7 +70,7 @@ class Contact {
     {
         if (this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "")
         {
-            return `${this.FullName}, ${this.ContactNumber}, ${this.EmailAddress}`;
+            return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
         }
         else
         {

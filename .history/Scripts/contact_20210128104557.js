@@ -13,19 +13,19 @@ class Contact {
     }
     get ContactNumber() 
     {
-        return this.m_contactNumber;
+        return this.m_fullName;
     }
     set ContactNumber(value) 
     {
-        this.m_contactNumber = value;
+        this.m_fullName = value;
     }
     get EmailAddress() 
     {
-        return this.m_emailAddress;
+        return this.m_fullName;
     }
     set EmailAddress(value) 
     {
-        this.m_emailAddress = value;
+        this.m_fullName = value;
     }
     
     /**
@@ -35,9 +35,9 @@ class Contact {
      * @param {*} emailAddress 
      */
     constructor(fullName = "", contactNumber = "", emailAddress = "") {
-        this.FullName = fullName;
-        this.ContactNumber = contactNumber;
-        this.EmailAddress = emailAddress;
+        this.m_fullName = fullName;
+        this.m_contactNumber = contactNumber;
+        this.m_emailAddress = emailAddress;
     }
 
     /**
@@ -70,7 +70,7 @@ class Contact {
     {
         if (this.FullName !== "" && this.ContactNumber !== "" && this.EmailAddress !== "")
         {
-            return `${this.FullName}, ${this.ContactNumber}, ${this.EmailAddress}`;
+            return `${this.FullName},${this.ContactNumber},${this.EmailAddress}`;
         }
         else
         {
